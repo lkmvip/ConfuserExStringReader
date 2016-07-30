@@ -39,6 +39,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.chkIgnoreEmpty = new System.Windows.Forms.CheckBox();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -145,11 +146,22 @@
 			this.groupBox1.TabIndex = 9;
 			this.groupBox1.TabStop = false;
 			// 
+			// chkIgnoreEmpty
+			// 
+			this.chkIgnoreEmpty.AutoSize = true;
+			this.chkIgnoreEmpty.Location = new System.Drawing.Point(18, 156);
+			this.chkIgnoreEmpty.Name = "chkIgnoreEmpty";
+			this.chkIgnoreEmpty.Size = new System.Drawing.Size(120, 17);
+			this.chkIgnoreEmpty.TabIndex = 10;
+			this.chkIgnoreEmpty.Text = "Ignore empty strings";
+			this.chkIgnoreEmpty.UseVisualStyleBackColor = true;
+			// 
 			// frmMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(566, 194);
+			this.Controls.Add(this.chkIgnoreEmpty);
 			this.Controls.Add(this.btnRead);
 			this.Controls.Add(this.groupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -160,6 +172,7 @@
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -176,6 +189,7 @@
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.CheckBox chkIgnoreEmpty;
 	}
 }
 

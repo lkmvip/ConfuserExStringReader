@@ -81,30 +81,35 @@ namespace ConfuserExStringReader
 					MessageBox.Show("Method not found, " + txtMethodName.Text, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
 					return;
 				}
-
+				var ignoreEmpty = chkIgnoreEmpty.Checked;
 				var errorsCount = 0;
-				var codeNum = 0;
+				var codeNum = -1;
 
 				var result = new Dictionary<int, object>();
 				do
 				{
+					codeNum++;
+
 					try
 					{
-						var value = methodInfo.Invoke(null, new object[] { codeNum });
+						var value = methodInfo.Invoke(null, new object[] {codeNum});
+						if (ignoreEmpty && (value as string) == "")
+							continue;
+
 						result.Add(codeNum, value);
 					}
 					catch (Exception)
 					{
 						errorsCount++;
 					}
-					codeNum++;
+
 
 				} while (errorsCount <= 10);
 
-				var resultStr = JsonConvert.SerializeObject(result);
+				var resultStr = JsonConvert.SerializeObject(result, Formatting.Indented);
 
 				var resultFileName = txtAssembly.Text + ".Codes.txt";
-				File.AppendAllText(resultFileName, resultStr);
+				File.WriteAllText(resultFileName, resultStr);
 
 				MessageBox.Show(result.Count + " strings are read from ConfuserEx'ed assembly", "Success", MessageBoxButtons.OK,
 					MessageBoxIcon.Information);
